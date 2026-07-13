@@ -122,30 +122,27 @@ app.post('/api/session/verify', async (req, res) => {
     const { userId, token } = req.body;
     try {
         const user = await User.findById(userId);
-        if (!user) return res.json({ valid: false, reason: "deleted" });
-
-        if (!user.startTime) {
-            return res.json({ valid: true, msRemaining: user.durationMs });
+        if (!user || user.sessionToken !== token) {
+            return res.json({ valid: false, reason: 'multi-device' });
         }
-
         const now = Date.now();
         const elapsed = now - user.startTime.getTime();
-        const msRemaining = user.durationMs - elapsed;
-
-        if (msRemaining <= 0) {
+        if (elapsed >= user.durationMs) {
             user.isOnline = false;
-            user.sessionToken = '';
             await user.save();
-            return res.json({ valid: false, reason: "expired" });
+            return res.json({ valid: false, reason: 'expired' });
         }
 
-        if (user.sessionToken !== token) {
-            return res.json({ valid: false, reason: "multi-device" });
-        }
+        // Calculate the exact remaining milliseconds left for this account balance
+        const timeLeftMs = user.durationMs - elapsed;
 
-        res.json({ valid: true, msRemaining });
+        // Return both validation status AND the countdown time payload
+        res.json({ 
+            valid: true, 
+            timeLeftMs: timeLeftMs 
+        });
     } catch (err) {
-        res.json({ valid: false, reason: "error" });
+        res.json({ valid: false });
     }
 });
 
@@ -215,24 +212,43 @@ app.delete('/api/admin/delete/:id', async (req, res) => {
     }
 });
 
-app.post('/api/admin/clear-expired', async (req, res) => {
-    try {
-        const users = await User.find({});
-        const now = Date.now();
-        let deletedCount = 0;
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
 
-        for (let user of users) {
-            if (user.startTime) {
-                const elapsed = now - user.startTime.getTime();
-                if (elapsed >= user.durationMs) {
-                    await User.findByIdAndDelete(user._id);
-                    deletedCount++;
-                }
+    if (username === 'admin' && password === 'crazzyadmin015') {
+        // Return verification tokens so the frontend can append it to the admin URL securely
+        return res.json({ success: true, isAdmin: true, token: 'crazzyadmin015' });
+    }
+
+    try {
+        const user = await User.findOne({ username, password });
+        if (!user) {
+            return res.status(401).json({ success: false, message: "Invalid credentials!" });
+        }
+
+        const now = Date.now();
+        if (!user.startTime) {
+            user.startTime = new Date(now);
+        } else {
+            const elapsed = now - user.startTime.getTime();
+            if (elapsed >= user.durationMs) {
+                return res.status(403).json({ success: false, message: "This account has expired!" });
             }
         }
-        res.json({ success: true, deletedCount });
+
+        const newSessionToken = 'tkn_' + Math.random().toString(36).substr(2, 9);
+        user.sessionToken = newSessionToken;
+        user.isOnline = true;
+        await user.save();
+
+        res.json({
+            success: true,
+            isAdmin: false,
+            userId: user._id,
+            token: newSessionToken
+        });
     } catch (err) {
-        res.status(500).json({ success: false });
+        res.status(500).json({ success: false, message: "Database server error." });
     }
 });
 
