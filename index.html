@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TikTok Coins</title>
 <link rel="stylesheet" href="style.css">
-  <!-- Link to the Web App Manifest (Primarily Android/Chrome) -->
+<!-- Link to the Web App Manifest (Primarily Android/Chrome) -->
 <link rel="manifest" href="/manifest.json">
 
 <!-- Meta tags for Apple iOS/Safari PWA Compatibility -->
@@ -20,9 +20,7 @@
 
   <div class="header">
     <div class="header-left">
-      <svg class="tiktok-logo" viewBox="0 0 48 48" fill="none">
-        <path d="M33 6c1.2 5 4.4 8.4 9 9v6.3c-3.4.2-6.6-.8-9-2.7v13.1c0 7.7-6.3 13.9-14 13.9S5 39.4 5 31.7c0-7.4 5.8-13.5 13.1-13.9v6.6c-3.6.4-6.4 3.4-6.4 7.1 0 4 3.2 7.2 7.2 7.2s7.2-3.2 7.2-7.2V6H33z" fill="black"/>
-      </svg>
+      <img src="tiktok-logo-icon.png" class="tiktok-logo" alt="TikTok">
       <div class="header-title">TikTok Coins</div>
     </div>
     <div class="header-icons">
@@ -230,13 +228,14 @@
     <div class="payment-row">
       <span class="label">Payment method</span>
       <div class="payment-icons">
-        <span class="pay-badge" style="color:#1a1f71;">VISA</span>
-        <span class="pay-badge" style="background:linear-gradient(90deg,#eb001b 50%,#f79e1b 50%);color:transparent;">MC</span>
-        <span class="pay-badge">Maes</span>
-        <span class="pay-badge" style="color:#006fcf;">AMEX</span>
-        <span class="pay-badge" style="color:#003087;">PayPal</span>
-        <span class="pay-badge" style="color:#000;">Pay</span>
-      </div>
+  <img src="visa.png" class="footer-pay-logo" alt="Visa">
+  <img src="ms.png" class="footer-pay-logo" alt="Mastercard">
+  <img src="jcb.webp" class="footer-pay-logo" alt="JCB">
+  <img src="amex.png" class="footer-pay-logo" alt="Amex">
+  <img src="paypal.png" class="footer-pay-logo" alt="PayPal">
+  <img src="venmo.png" class="footer-pay-logo" alt="Venmo">
+  <img src="ap.jpg" class="footer-pay-logo" alt="Apple Pay">
+</div>
     </div>
     <button class="buy-btn" id="buyBtn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
@@ -296,13 +295,14 @@
         <div class="payment-row">
           <span class="label">Payment method</span>
           <div class="payment-icons">
-            <span class="pay-badge" style="color:#1a1f71;">VISA</span>
-            <span class="pay-badge" style="background:linear-gradient(90deg,#eb001b 50%,#f79e1b 50%);color:transparent;">MC</span>
-            <span class="pay-badge">Maes</span>
-            <span class="pay-badge" style="color:#006fcf;">AMEX</span>
-            <span class="pay-badge" style="color:#003087;">PayPal</span>
-            <span class="pay-badge" style="color:#000;">Pay</span>
-          </div>
+  <img src="visa.png" class="footer-pay-logo" alt="Visa">
+  <img src="ms.png" class="footer-pay-logo" alt="Mastercard">
+  <img src="jcb.webp" class="footer-pay-logo" alt="JCB">
+  <img src="amex.png" class="footer-pay-logo" alt="Amex">
+  <img src="paypal.png" class="footer-pay-logo" alt="PayPal">
+  <img src="venmo.png" class="footer-pay-logo" alt="Venmo">
+  <img src="ap.jpg" class="footer-pay-logo" alt="Apple Pay">
+</div>
         </div>
         <div class="total-row">
           <span>Total</span>
@@ -355,28 +355,28 @@
         <div class="payment-method-label">Payment method</div>
 
         <div class="payment-option" id="payCardOption">
-          <span class="payment-option-left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="1.6"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg>
-            Add Credit Or Debit Card
-          </span>
-          <svg class="payment-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
+  <span class="payment-option-left">
+    <svg class="payment-provider-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="1.6"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg>
+    Add Credit Or Debit Card
+  </span>
+  <svg class="payment-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+</div>
 
         <div class="payment-option" data-pay="apple">
-          <span class="payment-option-left">
-            <span class="pay-logo-badge">Pay</span>
-            Apple Pay
-          </span>
-          <span class="payment-radio"></span>
-        </div>
+  <span class="payment-option-left">
+    <img src="ap.jpg" class="payment-provider-logo" alt="Apple Pay">
+    Apple Pay
+  </span>
+  <span class="payment-radio"></span>
+</div>
 
         <div class="payment-option" data-pay="paypal">
-          <span class="payment-option-left">
-            <span class="pay-logo-badge" style="color:#003087;">PayPal</span>
-            PayPal
-          </span>
-          <span class="payment-radio"></span>
-        </div>
+  <span class="payment-option-left">
+    <img src="paypal.png" class="payment-provider-logo" alt="PayPal">
+    PayPal
+  </span>
+  <span class="payment-radio"></span>
+</div>
 
         <div class="order-divider"></div>
 
