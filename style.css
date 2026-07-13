@@ -12,6 +12,8 @@
 
 * {
   box-sizing: border-box;
+  /* FIX: Removes the blue highlight/flash when tapping items on iPhone */
+  -webkit-tap-highlight-color: transparent; 
 }
 
 body {
@@ -157,6 +159,11 @@ body {
   font-weight: 600;
 }
 
+/* FIX: Prevent auto zoom on profile inputs */
+.profile-name-input {
+  font-size: 16px !important;
+}
+
 .profile-sub {
   display: flex;
   align-items: center;
@@ -205,6 +212,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 4px;
   background: var(--bg);
+  font-size: 16px; /* FIX: Prevent auto zoom on settings input panel */
 }
 .expand-photo-btn, .expand-save-btn {
   width: 100%;
@@ -240,7 +248,7 @@ body {
   background: transparent;
   outline: none;
   width: 100%;
-  font-size: 14px;
+  font-size: 16px; /* FIX: Boosted from 14px to prevent iOS auto-zoom */
 }
 .lookup-profile {
   display: flex;
@@ -387,16 +395,15 @@ body {
   border-radius: 2px;
   background: #fff;
 }
-/* Styling for the new image logos in the bottom bars */
 .payment-icons {
   display: flex;
   align-items: center;
-  gap: 6px; /* Spaces the icons evenly from each other */
+  gap: 6px;
 }
 
 .payment-icons .footer-pay-logo {
-  height: 14px;          /* Clean uniform height height profile */
-  width: auto;           /* Automatically calculates width to prevent scaling squish */
+  height: 14px;
+  width: auto;
   object-fit: contain;
   flex-shrink: 0;
   display: inline-block;
@@ -479,7 +486,14 @@ body {
   border-radius: 4px;
   margin-bottom: 16px;
 }
-.coins-input-box input { border: none; outline: none; font-size: 18px; font-weight: 700; width: 100%; color: var(--text); }
+.coins-input-box input { 
+  border: none; 
+  outline: none; 
+  font-size: 18px; 
+  font-weight: 700; 
+  width: 100%; 
+  color: var(--text); 
+}
 
 /* Classic Keypad grid elements layout */
 .keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
@@ -528,28 +542,25 @@ body {
   padding: 12px 0; 
   cursor: pointer; 
 }
-/* Fix size for the new PayPal and Apple Pay logos in the Order Summary */
+
 .payment-option-left .payment-provider-logo {
-  width: 32px;            /* Set a clean, smaller width */
-  height: 20px;           /* Set a matching height */
-  object-fit: contain;    /* Prevents the logos from stretching or distorting */
-  margin-right: 10px;     /* Spaces it nicely away from the text */
+  width: 32px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
 }
 
-/* Fix size for the secure shield icon inside the buy buttons */
 .btn-shield-icon {
-  width: 14px;            /* Keeps the shield nice and small to match text scale */
+  width: 14px;
   height: 14px;
-  margin-right: 6px;      /* Spaces it away from the "Buy for..." text */
+  margin-right: 6px;
   object-fit: contain;
   display: inline-block;
   vertical-align: middle;
 }
 
-/* FIXED: Left Card Icon bounds rules */
-/* Left Card Icon bound rules matching image dimensions perfectly */
 .payment-option-left svg.payment-provider-logo { 
   width: 32px; 
   height: 20px; 
@@ -559,7 +570,6 @@ body {
   vertical-align: middle;
 }
 
-/* FIXED: Target right chevron arrow inside order list to match layout exactly */
 .payment-option > svg {
   width: 14px !important;
   height: 14px !important;
@@ -567,7 +577,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Fixed round radio check box sizes */
 .payment-radio, .terms-checkbox { 
   width: 20px; 
   height: 20px; 
@@ -614,7 +623,6 @@ body {
   justify-content: center;
 }
 
-/* Spinner centered with text directly beneath it */
 .pink-spinner {
   width: 42px; 
   height: 42px;
@@ -650,7 +658,6 @@ body {
 .success-title { font-size: 20px; font-weight: 700; margin: 0 0 8px 0; }
 .success-msg { font-size: 14px; color: var(--muted); margin: 0 0 24px 0; }
 
-/* Clean success button with smooth transitions */
 .success-btn { 
   background: var(--pink); 
   color: white; 
