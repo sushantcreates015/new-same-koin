@@ -49,8 +49,8 @@ body {
 }
 
 .tiktok-logo {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
@@ -387,6 +387,20 @@ body {
   border-radius: 2px;
   background: #fff;
 }
+/* Styling for the new image logos in the bottom bars */
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Spaces the icons evenly from each other */
+}
+
+.payment-icons .footer-pay-logo {
+  height: 14px;          /* Clean uniform height height profile */
+  width: auto;           /* Automatically calculates width to prevent scaling squish */
+  object-fit: contain;
+  flex-shrink: 0;
+  display: inline-block;
+}
 
 .buy-btn {
   width: 100%;
@@ -514,19 +528,35 @@ body {
   padding: 12px 0; 
   cursor: pointer; 
 }
-.payment-option-left { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-  font-size: 14px; 
+/* Fix size for the new PayPal and Apple Pay logos in the Order Summary */
+.payment-option-left .payment-provider-logo {
+  width: 32px;            /* Set a clean, smaller width */
+  height: 20px;           /* Set a matching height */
+  object-fit: contain;    /* Prevents the logos from stretching or distorting */
+  margin-right: 10px;     /* Spaces it nicely away from the text */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Fix size for the secure shield icon inside the buy buttons */
+.btn-shield-icon {
+  width: 14px;            /* Keeps the shield nice and small to match text scale */
+  height: 14px;
+  margin-right: 6px;      /* Spaces it away from the "Buy for..." text */
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* FIXED: Left Card Icon bounds rules */
-.payment-option-left svg:first-child { 
-  width: 22px !important; 
-  height: 22px !important; 
+/* Left Card Icon bound rules matching image dimensions perfectly */
+.payment-option-left svg.payment-provider-logo { 
+  width: 32px; 
+  height: 20px; 
   flex-shrink: 0;
   color: #121212;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* FIXED: Target right chevron arrow inside order list to match layout exactly */
