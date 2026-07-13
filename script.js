@@ -208,7 +208,9 @@ function refreshCustomDisplay() {
   }
 
   const coins = Number(customDigits || 0);
-  const valid = coins >= MIN_COINS && coins <= MAX_COINS;
+  
+  // Strictly checks if customDigits has length and the number is greater than 0
+  const valid = customDigits.length > 0 && coins > 0;
 
   if (coins > 0) {
     const price = (coins * COIN_RATE).toFixed(2);
@@ -217,6 +219,7 @@ function refreshCustomDisplay() {
     customTotal.textContent = 'US$0';
   }
 
+  // Stays disabled (true) if not valid
   customRechargeBtn.disabled = !valid;
 }
 
@@ -353,7 +356,11 @@ saveProfileBtn.addEventListener('click', () => {
 
 // ---------- Order summary bottom sheet ----------
 function refreshPayNowState() {
-  payNowBtn.disabled = !termsAgreed;
+  if (termsAgreed) {
+    payNowBtn.disabled = false;
+  } else {
+    payNowBtn.disabled = true;
+  }
 }
 
 function openOrderSheet(coins, price) {
