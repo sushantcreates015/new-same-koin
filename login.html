@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+        body { background-color: #6b7280; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .login-card { background-color: #ffffff; border: 1px solid #d1d5db; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 100%; max-width: 460px; padding: 30px 24px; }
+        .header-container { margin-bottom: 20px; }
+        .header-table { width: 100%; border-collapse: collapse; }
+        h1 { font-size: 28px; font-weight: bold; color: #111827; }
+        .btn-contact { background-color: #3b82f6; color: #ffffff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; float: right; }
+        .btn-contact:hover { background-color: #2563eb; }
+        .clear { clear: both; }
+        .warning-box { background-color: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 4px; padding: 12px; margin-bottom: 20px; }
+        .warning-table { width: 100%; border-collapse: collapse; }
+        .warning-icon-cell { width: 30px; vertical-align: top; color: #f59e0b; padding-top: 2px; }
+        .warning-text h3 { color: #b45309; font-size: 15px; font-weight: bold; margin-bottom: 4px; }
+        .warning-text p { color: #d97706; font-size: 13px; line-height: 1.4; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 15px; font-weight: bold; color: #4b5563; margin-bottom: 6px; }
+        .input-wrapper { position: relative; }
+        .form-input { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #d1d5db; border-radius: 6px; outline: none; color: #1f2937; }
+        .form-input:focus { border-color: #9ca3af; }
+        .toggle-password { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #9ca3af; cursor: pointer; }
+        .btn-login { width: 100%; color: #ffffff; border: none; padding: 14px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: not-allowed; background-color: #fca5a5; }
+        .btn-login.active { background-color: #ef4444; cursor: pointer; }
+        .btn-login.active:hover { background-color: #dc2626; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: none; z-index: 1000; }
+        .modal-card { background: #ffffff; padding: 24px; border-radius: 8px; max-width: 360px; width: 90%; margin: 15% auto; border: 1px solid #9ca3af; }
+        .modal-card h2 { font-size: 18px; margin-bottom: 16px; color: #111827; font-weight: bold; text-align: center; }
+        .social-link { display: block; padding: 12px; margin: 8px 0; border-radius: 6px; background: #f3f4f6; color: #111827; text-decoration: none; font-weight: bold; font-size: 14px; border: 1px solid #e5e7eb; }
+        .social-link:hover { background: #e5e7eb; }
+        .social-link i { vertical-align: middle; margin-right: 8px; }
+        .btn-close-modal { margin-top: 12px; background: #6b7280; color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="header-container">
+            <table class="header-table">
+                <tr>
+                    <td><h1>Login</h1></td>
+                    <td><button class="btn-contact" id="contactBtn">Contact Admin</button></td>
+                </tr>
+            </table>
+            <div class="clear"></div>
+        </div>
+
+        <div class="warning-box">
+            <table class="warning-table">
+                <tr>
+                    <td class="warning-icon-cell"><i data-lucide="triangle-alert"></i></td>
+                    <td class="warning-text">
+                        <h3>Educational Purpose Only</h3>
+                        <p>This website is only for educational or demonstration purposes. No real transactions or gifts are provided.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-input" autocomplete="off" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" class="form-input" required>
+                    <button type="button" class="toggle-password" id="togglePasswordBtn">
+                        <i data-lucide="eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="loginSubmitBtn" disabled>Login</button>
+        </form>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card">
+            <h2>Contact Admin</h2>
+            <a href="https://instagram.com/fimpong34" target="_blank" class="social-link"><i data-lucide="instagram"></i> Instagram: @fimpong34</a>
+            <a href="https://tiktok.com/@fimpong34" target="_blank" class="social-link"><i data-lucide="video"></i> TikTok: @fimpong34</a>
+            <a href="https://t.me/fimpong34" target="_blank" class="social-link"><i data-lucide="send"></i> Telegram: @fimpong34</a>
+            <button class="btn-close-modal" id="closeModalBtn">Dismiss</button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const loginForm = document.getElementById('loginForm');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+        const loginSubmitBtn = document.getElementById('loginSubmitBtn');
+        const contactBtn = document.getElementById('contactBtn');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        passwordInput.addEventListener('input', () => {
+            if (passwordInput.value.trim().length > 0) {
+                loginSubmitBtn.classList.add('active');
+                loginSubmitBtn.removeAttribute('disabled');
+            } else {
+                loginSubmitBtn.classList.remove('active');
+                loginSubmitBtn.setAttribute('disabled', 'true');
+            }
+        });
+
+        togglePasswordBtn.addEventListener('click', () => {
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+            togglePasswordBtn.innerHTML = isPassword ? '<i data-lucide="eye-off"></i>' : '<i data-lucide="eye"></i>';
+            lucide.createIcons();
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: usernameInput.value.trim(),
+                    password: passwordInput.value
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    if(data.isAdmin) {
+                        // Secure Route: Query parameter required to load admin dashboard layout
+                        window.location.href = `admin.html?auth=${data.token}`;
+                    } else {
+                        sessionStorage.setItem('current_user_id', data.userId);
+                        sessionStorage.setItem('current_user_token', data.token);
+                        window.location.href = `index.html?user=true`;
+                    }
+                } else {
+                    alert(data.message || "Login authentication failed.");
+                }
+            })
+            .catch(() => alert("Connection error to server node. Ensure the application is serving out of port 3000 instead of port 5000!"));
+        });
+
+        contactBtn.addEventListener('click', () => modalOverlay.style.display = 'block');
+        closeModalBtn.addEventListener('click', () => modalOverlay.style.display = 'none');
+    </script>
+</body>
+</html>

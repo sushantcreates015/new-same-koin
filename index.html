@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Coins</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="screen">
+
+  <div class="header">
+    <div class="header-left">
+      <svg class="tiktok-logo" viewBox="0 0 48 48" fill="none">
+        <path d="M33 6c1.2 5 4.4 8.4 9 9v6.3c-3.4.2-6.6-.8-9-2.7v13.1c0 7.7-6.3 13.9-14 13.9S5 39.4 5 31.7c0-7.4 5.8-13.5 13.1-13.9v6.6c-3.6.4-6.4 3.4-6.4 7.1 0 4 3.2 7.2 7.2 7.2s7.2-3.2 7.2-7.2V6H33z" fill="black"/>
+      </svg>
+      <div class="header-title">TikTok Coins</div>
+    </div>
+    <div class="header-icons">
+      <button class="icon-btn" aria-label="History">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5" stroke-linecap="round"/><circle cx="12" cy="17.5" r="0.6" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="card profile-card">
+    <div class="secure-banner">
+      <div class="secure-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+        Secure payment
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </div>
+    <div class="profile-row">
+      <div class="avatar-wrap" id="avatarWrap" title="Click to change photo">
+        <img class="avatar" id="avatarImg" src="https://api.dicebear.com/7.x/adventurer/svg?seed=nicoagey&backgroundColor=eab308" alt="avatar">
+        <div class="avatar-edit-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <input type="file" id="avatarInput" accept="image/*" hidden>
+      </div>
+      <div class="profile-info">
+        <div class="profile-name-row">
+          <div class="profile-name" id="username">nico.agey</div>
+          <input class="profile-name-input" id="usernameInput" type="text" value="nico.agey" hidden>
+        </div>
+        <div class="profile-sub">
+          <img class="coin-icon-sm" src="coin.png" alt="coin">
+          <span id="balance">0</span>
+          <span class="divider-dot">|</span>
+          <span class="invite-link">Invite your friends! 🧑‍🤝‍🧑</span>
+        </div>
+      </div>
+      <button class="chevron-down" id="chevronBtn" aria-label="Expand options">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+    </div>
+
+    <div class="expand-panel" id="expandPanel">
+      <div class="expand-field">
+        <label for="nameEdit">Display name</label>
+        <input type="text" id="nameEdit" placeholder="Enter your name" value="nico.agey">
+      </div>
+      <div class="expand-field">
+        <label for="balanceEdit">Coin balance</label>
+        <div class="balance-edit-row">
+          <img src="coin.png" class="coin-icon-sm" alt="coin">
+          <input type="number" id="balanceEdit" placeholder="0" value="0" min="0">
+        </div>
+      </div>
+      <div class="expand-field">
+        <label>Profile photo</label>
+        <button class="expand-photo-btn" id="expandPhotoBtn">Choose photo</button>
+      </div>
+      <button class="expand-save-btn" id="saveProfileBtn">Save changes</button>
+    </div>
+  </div>
+
+  <div class="card search-card">
+
+    <div class="search-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+
+        <input
+            type="text"
+            id="searchUsernameInput"
+            placeholder="Enter TikTok @Username">
+    </div>
+
+    <div class="lookup-profile" id="lookupProfile">
+
+        <img
+            id="lookupAvatar"
+            class="lookup-avatar"
+            src="https://api.dicebear.com/7.x/adventurer/svg?seed=user"
+            alt="avatar">
+
+        <div class="lookup-info">
+
+            <div class="lookup-name" id="lookupName">
+                TikTok User
+            </div>
+
+            <div class="lookup-username" id="lookupUsername">
+                @username
+            </div>
+
+            <div class="lookup-stats">
+
+                <div class="lookup-stat">
+
+                    <strong id="lookupFollowers">
+                        0
+                    </strong>
+
+                    <span>Followers</span>
+
+                </div>
+
+                <div class="lookup-stat">
+
+                    <strong id="lookupFollowing">
+                        0
+                    </strong>
+
+                    <span>Following</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+  
+
+  <div class="card">
+    <div class="recharge-title">Recharge</div>
+    <div class="save-note">
+      Save around 25% with a lower third-party service fee.
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
+    </div>
+    <div class="coin-grid" id="coinGrid">
+      <div class="coin-option selected" data-coins="30" data-price="0.31">
+        <div class="coin-amount"><img src="coin.png" alt="coin">30</div>
+        <div class="coin-price">US$0.31</div>
+      </div>
+      <div class="coin-option" data-coins="60" data-price="0.63">
+        <div class="coin-amount"><img src="coin.png" alt="coin">60</div>
+        <div class="coin-price">US$0.63</div>
+      </div>
+      <div class="coin-option" data-coins="90" data-price="0.95">
+        <div class="coin-amount"><img src="coin.png" alt="coin">90</div>
+        <div class="coin-price">US$0.95</div>
+      </div>
+      <div class="coin-option" data-coins="150" data-price="1.59">
+        <div class="coin-amount"><img src="coin.png" alt="coin">150</div>
+        <div class="coin-price">US$1.59</div>
+      </div>
+      <div class="coin-option" data-coins="200" data-price="2.09">
+        <div class="coin-amount"><img src="coin.png" alt="coin">200</div>
+        <div class="coin-price">US$2.09</div>
+      </div>
+      <div class="coin-option custom" data-custom="true">
+        <div class="coin-amount">Custom</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="promo-row">
+      <div class="promo-icon"><img src="coin.png" alt="coin" class="promo-coin-icon"></div>
+      <div class="promo-text">
+        <div class="promo-title">FEST Mania Power Zone</div>
+        <div class="promo-sub">Find out more about recharge deals on tiktok.com/coin this 11 Jun – 11 Jul</div>
+      </div>
+      <svg class="promo-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="promo-row">
+      <div class="promo-icon">📱</div>
+      <div class="promo-text">
+        <div class="promo-title" style="font-weight:700;">Enable push notifications to stay updated on web-only deals!</div>
+      </div>
+      <button class="enable-btn" id="enableBtn">Enable</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="exchange-row">
+      <div class="exchange-left">
+        <div class="exchange-title">Exchange</div>
+        <div class="exchange-sub">
+          LIVE Gifts balance: $1.86(
+          <img src="coin.png" class="coin-icon-sm" alt="coin">
+          184)
+        </div>
+      </div>
+      <svg class="promo-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="special-offer-row">
+      <span class="label">Special offer</span>
+      <span class="cashback">Unlock 5% cashback
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </span>
+    </div>
+    <div class="payment-row">
+      <span class="label">Payment method</span>
+      <div class="payment-icons">
+        <span class="pay-badge" style="color:#1a1f71;">VISA</span>
+        <span class="pay-badge" style="background:linear-gradient(90deg,#eb001b 50%,#f79e1b 50%);color:transparent;">MC</span>
+        <span class="pay-badge">Maes</span>
+        <span class="pay-badge" style="color:#006fcf;">AMEX</span>
+        <span class="pay-badge" style="color:#003087;">PayPal</span>
+        <span class="pay-badge" style="color:#000;">Pay</span>
+      </div>
+    </div>
+    <button class="buy-btn" id="buyBtn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+      Buy for US$0.31
+    </button>
+  </div>
+  
+  <div class="custom-backdrop" id="customBackdrop"></div>
+  <div class="custom-sheet-wrap" id="customSheetWrap">
+    <div class="custom-sheet" id="customSheet">
+
+      <div class="custom-sheet-header">
+        <button class="custom-icon-btn" id="customBackBtn" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="custom-sheet-title">Custom</div>
+        <button class="custom-icon-btn" aria-label="Help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5" stroke-linecap="round"/><circle cx="12" cy="17.5" r="0.6" fill="currentColor"/></svg>
+        </button>
+      </div>
+
+      <div class="custom-sheet-body">
+        <div class="coins-label">
+          Number of Coins
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="coins-input-box">
+          <img src="coin.png" class="coin-icon-sm" alt="coin">
+          <input type="text" id="customCoinInput" placeholder="30 - 2,500,000" readonly>
+        </div>
+
+        <div class="keypad">
+          <button class="keypad-key" data-key="1">1</button>
+          <button class="keypad-key" data-key="2">2</button>
+          <button class="keypad-key" data-key="3">3</button>
+          <button class="keypad-key keypad-back" id="keypadBack" aria-label="Delete">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-6-6z"/><line x1="12.5" y1="9.5" x2="17.5" y2="14.5"/><line x1="17.5" y1="9.5" x2="12.5" y2="14.5"/></svg>
+          </button>
+          <button class="keypad-key" data-key="4">4</button>
+          <button class="keypad-key" data-key="5">5</button>
+          <button class="keypad-key" data-key="6">6</button>
+          <button class="keypad-key" data-key="000">000</button>
+          <button class="keypad-key" data-key="7">7</button>
+          <button class="keypad-key" data-key="8">8</button>
+          <button class="keypad-key" data-key="9">9</button>
+          <button class="keypad-key" data-key="0">0</button>
+        </div>
+      </div>
+
+      <div class="custom-sheet-footer">
+        <div class="special-offer-row">
+          <span class="label">Special offer</span>
+          <span class="cashback">Unlock 5% cashback
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </div>
+        <div class="payment-row">
+          <span class="label">Payment method</span>
+          <div class="payment-icons">
+            <span class="pay-badge" style="color:#1a1f71;">VISA</span>
+            <span class="pay-badge" style="background:linear-gradient(90deg,#eb001b 50%,#f79e1b 50%);color:transparent;">MC</span>
+            <span class="pay-badge">Maes</span>
+            <span class="pay-badge" style="color:#006fcf;">AMEX</span>
+            <span class="pay-badge" style="color:#003087;">PayPal</span>
+            <span class="pay-badge" style="color:#000;">Pay</span>
+          </div>
+        </div>
+        <div class="total-row">
+          <span>Total</span>
+          <span id="customTotal">US$0</span>
+        </div>
+        <button class="buy-btn" id="customRechargeBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+          Recharge
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="custom-backdrop" id="orderBackdrop"></div>
+  <div class="custom-sheet-wrap" id="orderSheetWrap">
+    <div class="custom-sheet order-sheet" id="orderSheet">
+
+      <div class="custom-sheet-header">
+        <button class="custom-icon-btn" id="orderBackBtn" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="custom-sheet-title">Order summary</div>
+        <button class="custom-icon-btn" aria-label="Help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5" stroke-linecap="round"/><circle cx="12" cy="17.5" r="0.6" fill="currentColor"/></svg>
+        </button>
+      </div>
+
+      <div class="order-secure-bar">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+        Secure payment
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <div class="custom-sheet-body order-sheet-body">
+        <div class="order-row">
+          <span class="order-row-label">Account</span>
+          <span class="order-account">
+            <img id="orderAvatar" src="" alt="avatar">
+            <span id="orderUsername">nico.agey</span>
+          </span>
+        </div>
+        <div class="order-row">
+          <span class="order-row-label" id="orderPurchaseLabel">Purchase of 30 Coins</span>
+          <span class="order-row-value" id="orderPurchasePrice">US$0.31</span>
+        </div>
+
+        <div class="order-divider"></div>
+
+        <div class="payment-method-label">Payment method</div>
+
+        <div class="payment-option" id="payCardOption">
+          <span class="payment-option-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="1.6"/><line x1="2.5" y1="10" x2="21.5" y2="10"/></svg>
+            Add Credit Or Debit Card
+          </span>
+          <svg class="payment-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+
+        <div class="payment-option" data-pay="apple">
+          <span class="payment-option-left">
+            <span class="pay-logo-badge">Pay</span>
+            Apple Pay
+          </span>
+          <span class="payment-radio"></span>
+        </div>
+
+        <div class="payment-option" data-pay="paypal">
+          <span class="payment-option-left">
+            <span class="pay-logo-badge" style="color:#003087;">PayPal</span>
+            PayPal
+          </span>
+          <span class="payment-radio"></span>
+        </div>
+
+        <div class="order-divider"></div>
+
+        <div class="terms-row" id="termsRow">
+          <span class="terms-checkbox" id="termsCheckbox"></span>
+          <span class="terms-text">
+            By ticking the box, I agree to the <strong>Virtual Items Policy</strong> and request the immediate credit of Coins to my account. I acknowledge that I will lose my right of withdrawal once I have used the Coins, at which point the contract has been fully performed.
+            <br><br>
+            For the limited purpose of confirming your applicable Coin price, TikTok detected that your location is <strong>United States, Coarsegold, Madera, California</strong>.
+          </span>
+        </div>
+      </div>
+
+      <div class="custom-sheet-footer">
+        <div class="total-row">
+          <span>Total</span>
+          <span id="orderTotal">US$0.31</span>
+        </div>
+        <button class="buy-btn" id="payNowBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+          Pay now
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="payment-overlay" id="paymentOverlay">
+    <div class="processing-container" id="processingContainer">
+      <div class="pink-spinner"></div>
+      <div class="processing-text">Processing payment...</div>
+    </div>
+
+    <div class="success-card" id="successCard">
+      <div class="success-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 class="success-title">Payment Completed</h2>
+      <p class="success-msg">You recharged <strong id="successCoinsCount">0</strong> Coins.</p>
+      <button class="success-btn" id="successGoBackBtn">Go back</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    function enforceSecurityCheck() {
+        const userId = sessionStorage.getItem('current_user_id');
+        const token = sessionStorage.getItem('current_user_token');
+
+        if (!userId || !token) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        fetch('/api/session/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId, token })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (!data.valid) {
+                if (data.reason === 'expired') alert("Your time has expired!");
+                if (data.reason === 'multi-device') alert("This account logged in from another device!");
+                if (data.reason === 'deleted') alert("Your account has been deleted by the admin!");
+                
+                sessionStorage.clear();
+                window.location.href = 'login.html';
+            }
+        })
+        .catch(() => console.log("Heartbeat sync error..."));
+    }
+
+    // Bind basic cleanup inside your custom app logout click routines if required
+    window.addEventListener('DOMContentLoaded', () => {
+        // Run loop enforcement check every single second
+        setInterval(enforceSecurityCheck, 1000);
+        enforceSecurityCheck();
+    });
+</script>
+
+</body>
+</html>
